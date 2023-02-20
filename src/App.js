@@ -2,6 +2,8 @@ import './App.css';
 import styled from '@emotion/styled';
 import Modal from './components/Modal';
 import { useState } from 'react';
+import StyledButton from './components/StyledButtons';
+import useInput from './hooks/useInput';
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +18,9 @@ const Button = styled.div`
   border-radius: 12px;
   color:#fff;
   background-color: #3d6afe;
-  margin: 0;
+  text-align: center;
+  
+  margin: 0 auto;
   border: none;
   font-size: 24px;
   &:active{
@@ -42,18 +46,105 @@ function App() {
     setIsOpen(false)
   }
 
+  const [title, onChangeTitle] = useInput();
+  const [price, onChangePrice] = useInput();
 
+  const onSubmitInput = (e) => {
+    e.preventDefault()
+    console.log("title:", title, "price:" , price)
+  }
+  // width, height, padding, color, desc
 
   return (
-    <Container>
-      <Button onClick={handleOpen}>Open</Button>
-      <Modal isOpen={isOpen} onClose={handleClose}>
-        <ModalBody>
-          <h2>Title</h2>
-          <p>Description</p>
-        </ModalBody>
-      </Modal>
-    </Container>
+    <>
+      <StyledButton
+        width={200}
+        height={50}
+        padding={10}
+        color="black"
+        background="white"
+        border="rgb(85, 239, 196)"
+        desc="Large">
+      </StyledButton>
+      <StyledButton
+        width={130}
+        height={45}
+        padding={10}
+        color="black"
+        background="rgb(85, 239, 196)"
+        desc="Medium">
+      </StyledButton>
+      <StyledButton
+        width={100}
+        height={40}
+        padding={10}
+        background="rgb(85, 239, 196)"
+        color="black"
+        desc="Small">
+      </StyledButton>
+      <div>
+        <StyledButton
+          width={200}
+          height={50}
+          padding={10}
+          color="black"
+          background="white"
+          border="rgb(250, 177, 160)"
+          desc="Large">
+        </StyledButton>
+        <StyledButton
+          width={130}
+          height={45}
+          padding={10}
+          color="black"
+          background="rgb(250, 177, 160)"
+          desc="Medium">
+        </StyledButton>
+        <StyledButton
+          width={100}
+          height={40}
+          padding={10}
+          background="rgb(250, 177, 160)"
+          color="black"
+          desc="Small">
+        </StyledButton>
+      </div>
+      <div>
+        <form >
+          이름 : <input type="text" 
+                        name='title'
+                        value={title}
+                        onChange={onChangeTitle}/>
+          가격 : <input type="text" 
+                        name='price'
+                        value={price}
+                        onChange={onChangePrice}/>
+          <StyledButton
+                  width={100}
+                  height={40}
+                  padding={10}
+                  background="rgb(85, 239, 196)"
+                  color="black"
+                  desc="저장"
+                  onClick={onSubmitInput}
+            ></StyledButton>
+        </form>
+
+      </div>
+      <Container>
+        <Button onClick={handleOpen}>Open</Button>
+        <Modal isOpen={isOpen} onClose={handleClose}>
+          <ModalBody>
+            <h2>Title</h2>
+            <p>Description</p>
+            <button onClick={handleClose}>닫기</button>
+          </ModalBody>
+        </Modal>
+      </Container>
+    </>
+
+
+
   );
 }
 
