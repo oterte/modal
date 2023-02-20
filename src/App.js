@@ -37,6 +37,13 @@ const ModalBody = styled.div`
   padding-block: 12px;
   padding-inline: 24px;
 `
+const StyledDiv = styled.div`
+  width: 100%;
+  height: 200px;
+  border: 2px solid black;
+  overflow: hidden;
+  
+`
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => {
@@ -51,9 +58,9 @@ function App() {
 
   const onSubmitInput = (e) => {
     e.preventDefault()
-    console.log("title:", title, "price:" , price)
+    alert(`{이름 : ${title}, price: ${price}}`)
   }
-  // width, height, padding, color, desc
+ 
 
   return (
     <>
@@ -111,25 +118,37 @@ function App() {
       </div>
       <div>
         <form >
-          이름 : <input type="text" 
-                        name='title'
-                        value={title}
-                        onChange={onChangeTitle}/>
-          가격 : <input type="text" 
-                        name='price'
-                        value={price}
-                        onChange={onChangePrice}/>
+          이름 : <input type="text"
+            name='title'
+            value={title}
+            onChange={onChangeTitle} />
+          가격 : <input type="text"
+            name='price'
+            value={price}
+            onChange={onChangePrice} />
           <StyledButton
-                  width={100}
-                  height={40}
-                  padding={10}
-                  background="rgb(85, 239, 196)"
-                  color="black"
-                  desc="저장"
-                  onClick={onSubmitInput}
-            ></StyledButton>
+            width={100}
+            height={40}
+            padding={10}
+            background="rgb(85, 239, 196)"
+            color="black"
+            desc="저장"
+            onClickHandler={onSubmitInput}
+          ></StyledButton>
         </form>
-
+        <StyledDiv>
+          <h1>Select 영역</h1>
+          <select>
+            <option value="todo-one">할일 1</option>
+            <option value="todo-two">할일 2</option>
+            <option value="todo-three">할일 3</option>
+            <option value="todo-four">할일 4</option>
+            <option value="todo-five">할일 5</option>
+            <option value="todo-six">할일 6</option>
+            <option value="todo-seven">할일 7</option>
+            <option value="todo-eight">할일 8</option>
+          </select>
+        </StyledDiv>
       </div>
       <Container>
         <Button onClick={handleOpen}>Open</Button>

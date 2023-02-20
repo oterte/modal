@@ -22,8 +22,8 @@ const AllButton = styled.button`
 `
 
 
-function StyledButton({width, height, padding, color, desc, background,border}) {
-    const [btnColor, setBtnColor] = useState('grey')
+function StyledButton({width, height, padding, color, desc, background,border, onClickHandler}) {
+    
     
 
     
@@ -35,7 +35,7 @@ function StyledButton({width, height, padding, color, desc, background,border}) 
         background={background}
         border={border}
         color={color}
-       
+        onClick={onClickHandler}
     >
       {desc}
       
