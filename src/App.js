@@ -4,6 +4,7 @@ import Modal from './components/Modal';
 import { useState } from 'react';
 import StyledButton from './components/StyledButtons';
 import useInput from './hooks/useInput';
+import Dropdown from './components/Dropdown';
 
 const Container = styled.div`
   display: flex;
@@ -137,17 +138,7 @@ function App() {
           ></StyledButton>
         </form>
         <StyledDiv>
-          <h1>Select 영역</h1>
-          <select>
-            <option value="todo-one">할일 1</option>
-            <option value="todo-two">할일 2</option>
-            <option value="todo-three">할일 3</option>
-            <option value="todo-four">할일 4</option>
-            <option value="todo-five">할일 5</option>
-            <option value="todo-six">할일 6</option>
-            <option value="todo-seven">할일 7</option>
-            <option value="todo-eight">할일 8</option>
-          </select>
+          <Dropdown></Dropdown>
         </StyledDiv>
       </div>
       <Container>
