@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, {useState } from 'react'
 import styled from 'styled-components';
 
 const DropdownContainer = styled.div`
@@ -68,18 +68,20 @@ const dropdownItems = [
 
 
 function Dropdown() {
+    // 온오프 state
     const [isActive, setIsActive] = useState(false);
+    // 선택된 item 저장 state
     const [item, setItem] = useState()
 
     
 
-    
-    const onActiveToggle = useCallback(() => {
+    // 드롭다운 토글, 토글된 결과값이 state니까 
+    const onActiveToggle = () => {
         setIsActive((prev) => !prev)
-    } , [])
+    } 
 
 
-    const onSelectItem = useCallback((e)=> {
+    const onSelectItem = (e)=> {
         const targetId = e.target.id
 
         if(targetId === "item_name"){
@@ -89,7 +91,7 @@ function Dropdown() {
         }
 
         setIsActive((prev) => !prev)
-    }, [])
+    }
   return (
     <DropdownContainer>
         <DropdownBody onClick={onActiveToggle}>
